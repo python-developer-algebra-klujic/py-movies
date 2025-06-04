@@ -7,10 +7,21 @@ movies = [
 # Prepravite nize napisani kod tako da ispise samo jednom:
 # Filmovi: [Film1], [Film2], [...] su ukupno zaradili [nnnnnn] USD.
 
+nazivi_filmova = ''
+ukupni_iznos = 0
 
-for movie in movies:
+
+for index, movie in enumerate(movies):
     title = f'{movie['Title']}'
-    total_value = f'{str(movie['BoxOffice'][1 : ]).replace(',', '')}'
-    total_value_currency = f'{movie['BoxOffice'][0]}'
 
-    print(f'{title} ({total_value} {total_value_currency})')
+    if (len(movies) == index + 1):
+        nazivi_filmova += f'{title}'
+    else:
+        nazivi_filmova += f'{title}, '
+
+    total_value = int(str(movie['BoxOffice'][1 : ]).replace(',', ''))
+
+    ukupni_iznos += total_value
+
+
+print(f'Filmovi: {nazivi_filmova} su ukupno zaradili {ukupni_iznos} USD.')
