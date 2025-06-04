@@ -11,7 +11,7 @@ movies = [
 # Filmovi: [Film1], [Film2], [...] su ukupno zaradili [nnnnnn] USD.
 # Ono sto trebate napraviti je dodati kod samo unutar funkcija, ostatak nemojte mijenjati
 # niti dodavati. Funkcije trebaju vratiti odredene vrijednosti
-# Primjer reyultata: 
+# Primjer reyultata:
 #   Filmovi: The Shawshank Redemption, The Godfather, The Dark Knight su ukupno zaradili 700135338 USD.
 
 def gen_movie_titles(movies: Dict):
