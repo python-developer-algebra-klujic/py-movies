@@ -9,23 +9,29 @@ movies = [
 class Movie:
     def __init__(self, title, year, released):
         # START
-        pass
+        self.title = title
+        self.year = year
+        self.released = released
         # END
 
     def __str__(self):
         # Dodati sve podatke o filmu
         # START
-        pass
+        return f'{self.title} ({self.year}) - {self.released}'
         # END
-
-
 
 
 movies_list = []
 for movie in movies:
     # iz kolekcije rjecnika unesti podatke u objekt i svaki objekt dodajte u novu listu
     # START
-    pass
+    title = movie["Title"]
+    year = movie["Year"]
+    released = movie["Released"]
+
+    movie_object = Movie(title=title, year=year, released=released)
+    movies_list.append(movie_object)
+    # movies_list.append(Movie(title=movie["Title"], year=movie["Year"], released=movie["Released"]))
     # END
 
 
