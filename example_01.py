@@ -38,3 +38,19 @@ movie = {
     "Website":"N/A",
     "Response":"True"
 }
+
+# Film [naziv_filma] je zaradio [iznos] [valuta].
+
+naziv_filma = movie["Title"]
+iznos = str(movie["BoxOffice"][1 : ])
+iznos = iznos.replace(',', '')
+# valuta = movie["BoxOffice"]
+valuta = movie["BoxOffice"][0]
+# valuta_simbol = valuta[0]
+# valuta = valuta[0]
+#        "$28,767,189"[0]
+#        "$28,767,189"                $
+#        "28,767,189"
+#        "28767189"
+
+print(f'Film "{naziv_filma}" je zaradio {iznos} {valuta}.')
