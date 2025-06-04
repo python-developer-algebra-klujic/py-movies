@@ -16,13 +16,28 @@ movies = [
 
 def gen_movie_titles(movies: Dict):
     # START
-    pass
+
+    movie_titles = ''
+
+    for index, movie in enumerate(movies):
+        if (len(movies) == index + 1):
+            movie_titles += movie["Title"]
+        else:
+            movie_titles += movie["Title"] + ', '
+
+    return movie_titles
+
     # END
 
 
 def calculate_total_revenue(movies: Dict):
     # START
-    pass
+    total_revenue = 0
+
+    for movie in movies:
+        total_revenue += int(str(movie["BoxOffice"][1 : ]).replace(',', ''))
+
+    return total_revenue
     # END
 
 
