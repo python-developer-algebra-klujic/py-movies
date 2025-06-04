@@ -4,3 +4,14 @@ movies = [
     {"Title":"The Dark Knight","Year":"2008","Rated":"PG-13","Released":"18 Jul 2008","Runtime":"152 min","Genre":"Action, Crime, Drama","Director":"Christopher Nolan","Writer":"Jonathan Nolan, Christopher Nolan, David S. Goyer","Actors":"Christian Bale, Heath Ledger, Aaron Eckhart","Plot":"When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.","Language":"English, Mandarin","Country":"United States, United Kingdom","Awards":"Won 2 Oscars. 159 wins & 163 nominations total","Poster":"https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"9.1/10"},{"Source":"Rotten Tomatoes","Value":"94%"},{"Source":"Metacritic","Value":"84/100"}],"Metascore":"84","imdbRating":"9.1","imdbVotes":"2,528,462","imdbID":"tt0468569","Type":"movie","DVD":"09 Dec 2008","BoxOffice":"$534,987,076","Production":"N/A","Website":"N/A","Response":"True"},
 ]
 
+# Treba ispisati naslove filmova s zaradenim iznosom u zagredi, svaki u novom redu
+# Primjer: Film (1246548 $)
+
+# for jednina in mnozina:
+for movie in movies:
+    title = f'{movie['Title']}'
+    total_value = f'{str(movie['BoxOffice'][1 : ]).replace(',', '')}'
+    total_value_currency = f'{movie['BoxOffice'][0]}'
+
+    print(f'{title} ({total_value} {total_value_currency})')
+
