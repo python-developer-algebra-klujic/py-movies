@@ -1,4 +1,5 @@
 import json
+from typing import Dict
 
 '''
 1. Zadatak - Potrebno je ucitati podatke iz datoteke movies-250.json i ispisite sadrzaj u konzoli.
@@ -24,6 +25,15 @@ def read_json_file_content(file_path = 'data/movies-250.json'):
         return ''
 
 
+def print_movies_names(movie: Dict):
+    # for key, value in movies.items():
+    # for value in movies.values():
+    #     print(f'Naziv filma: {value}')
+    # for key in movie.keys():
+    #     print(f'Naziv filma: {movie[key]}')
+
+    print(f'Naziv filma: {movie["Title"]}')
+
 
 file_content = read_json_file_content()
 # print(type(file_content))
@@ -35,3 +45,11 @@ file_content = read_json_file_content()
     Potrenno je kreirati funkciju koja ce iz sadrzaja datoteke ispisati nazive svih filmova
 '''
 
+# for movie in file_content["movies"]:
+#     print_movies_names(movie)
+
+
+'''
+3. Zadatak
+    Ispisite naziv filma koji ima najbolju ukupnu ocjenu.
+'''
