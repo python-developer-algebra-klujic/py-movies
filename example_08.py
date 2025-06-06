@@ -2,8 +2,10 @@
 Za svaki film u json file listi ispisite naziv
     te prije koliko godina, mjeseci i dana je napravljen.
 '''
+import json
 from datetime import datetime as dt
 from dateutil.relativedelta import relativedelta
+
 from example_07 import read_json_file_content
 
 
@@ -31,3 +33,13 @@ for movie in file_content["movies"]:
 
 print()
 print(f'Najsatriji film je {oldest_movie['Title']}, izdan je prije {oldest_movie['released_before'].years} godine')
+
+# Pohraniti najstariji film u datoteku oldest_movie.json
+
+try:
+    with open('data/oldest_movie.json', 'w') as file_writer:
+        oldest_movie['released_before'] = str(oldest_movie['released_before'])
+        json.dump(oldest_movie, file_writer, indent=4)
+
+except Exception as ex:
+    print(f'Dogodila se greska {ex}.')
