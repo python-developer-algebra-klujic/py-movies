@@ -53,3 +53,58 @@ file_content = read_json_file_content()
 3. Zadatak
     Ispisite naziv filma koji ima najbolju ukupnu ocjenu.
 '''
+
+max_movie_rating = 0
+max_rating_movie = {}
+min_movie_rating = 10
+min_rating_movie = {}
+
+for movie in file_content["movies"]:
+    movie_ratings = []
+    movie_rating_list = movie["Ratings"] # 9.3 / 10 ; 91% ; 81 / 100
+
+    try:
+        first_rating = movie["Ratings"][0]["Value"]
+        first_rating_parts = first_rating.split('/')
+        first_rating_value = float(first_rating_parts[0]) / float(first_rating_parts[1])
+        movie_ratings.append(first_rating_value)
+    except Exception as ex:
+        pass
+
+    try:
+        second_rating_value = movie["Ratings"][1]["Value"].replace('%', '')
+        second_rating_value = float(second_rating_value) / 100
+        movie_ratings.append(second_rating_value)
+    except Exception as ex:
+        pass
+
+    try:
+        third_rating_parts = movie["Ratings"][2]["Value"].split('/')
+        third_rating_value = float(third_rating_parts[0]) / float(third_rating_parts[1])
+        movie_ratings.append(third_rating_value)
+    except Exception as ex:
+        pass
+
+    try:
+        fourth_rating_value = float(movie["Metascore"]) / 100
+        movie_ratings.append(fourth_rating_value)
+    except Exception as ex:
+        pass
+
+    try:
+        fifth_rating_value = float(movie["imdbRating"]) / 10
+        movie_ratings.append(fifth_rating_value)
+    except Exception as ex:
+        pass
+
+    movie_rating = sum(movie_ratings) / len(movie_ratings)
+
+    if movie_rating > max_movie_rating:
+        max_movie_rating = movie_rating
+        max_rating_movie = movie
+    if movie_rating < min_movie_rating:
+        min_movie_rating = movie_rating
+        min_rating_movie = movie
+
+print(max_rating_movie['Title'], max_movie_rating)
+print(min_rating_movie['Title'], min_movie_rating)
