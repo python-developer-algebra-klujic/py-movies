@@ -14,11 +14,18 @@ def load_movies():
         print(f'Dogodila se greska {ex}!')
 
 
-def load_image():
+def load_image(event):
     global lbl_movie_poster
 
-    # image_path = f'data/thumbs/{movies['movies'][0]['imdbID']}.jpg'
-    image_path = f'data/thumbs/no_image.jpg'
+    selected_movie_index = lb_movies.curselection()
+    if selected_movie_index:
+        selected_movie_title = lb_movies.get(selected_movie_index)
+        for movie in movies['movies']:
+            if selected_movie_title == movie['Title']:
+                image_path = f'data/thumbs/{movie['imdbID']}.jpg'
+
+    else:
+        image_path = f'data/thumbs/no_image.jpg'
     image = ImageTk.PhotoImage(image=Image.open(image_path))
     lbl_movie_poster.configure(image=image)
     lbl_movie_poster.image = image
@@ -44,10 +51,11 @@ lbl_movie_poster.grid(row=1, column=0, padx=10, pady=10)
 
 lb_movies = tk.Listbox(root)
 lb_movies.grid(row=1, column=1, padx=10, pady=10)
+lb_movies.bind('<<ListboxSelect>>', load_image)
 
 
 if __name__ == '__main__':
     load_movies()
-    load_image()
+    load_image(None)
     load_listbox()
     root.mainloop()
