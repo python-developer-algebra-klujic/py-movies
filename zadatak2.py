@@ -20,8 +20,22 @@ def group_books_by_letter(books):
     a vrijednost lista naslova koji tim slovom započinju. Redoslijed naslova unutar pojedine liste
     mora ostati isti kao u ulaznoj listi. Prazne stringove zanemari i ne koristi vanjske biblioteke."""
     # START SOLUTION
+    result = {}
 
+    for book in books:
+        first_letter = book[0]
+        try:
+            first_letter_int = int(first_letter)
+            if isinstance(first_letter_int, int):
+                continue
+        except:
+            pass
 
+        if first_letter.upper() not in result:
+            result[first_letter] = []
+        result[first_letter].append(book)
+
+    return result
     # END SOLUTION
 
 
