@@ -21,8 +21,18 @@ def split_movies_by_genre(movies):
     Redoslijed naslova u svakoj listi mora ostati isti kao u ulaznoj listi.
     Nije dozvoljeno koristiti vanjske biblioteke."""
     # START SOLUTION
+    result = {}
+
+    for movie in movies:
+        genre = movie["genre"]
+        title = movie["title"]
+
+        if genre not in result:
+            result[genre] = []
+        result[genre].append(title)
 
 
+    return result
     # END SOLUTION
 
 
