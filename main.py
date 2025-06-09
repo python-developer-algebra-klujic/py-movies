@@ -50,6 +50,7 @@ def load_listbox():
 
 root = tk.Tk()
 root.title('Py Movies')
+root.geometry('800x800')
 
 lbl_title = tk.Label(root, text='Py Movies', font=('Verdana', 20))
 lbl_title.grid(row=0, column=0, columnspan=2, pady=10)
@@ -75,7 +76,6 @@ lb_movie_title = tk.Label(frm_movie_data,
                           font=('Verdana', 16))
 lb_movie_title.grid(row=0, column=1)
 '''
-Title
 Released
 Runtime
 Genre
@@ -85,7 +85,6 @@ Actors
 Plot
 Language
 Ratings
-
 '''
 
 
