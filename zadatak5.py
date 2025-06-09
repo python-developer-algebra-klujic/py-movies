@@ -20,7 +20,12 @@ def write_books_to_csv(filename, books):
     """
 
     # START SOLUTION
+    with open(filename, 'w', encoding='utf-8') as file_writer:
+        file_writer.write('title,author,pages\n')
 
+        for book in books:
+            file_line = f'{book["title"]},{book["author"]},{book["pages"]}\n'
+            file_writer.write(file_line)
     # END SOLUTION
 
 
@@ -32,7 +37,21 @@ def average_pages_from_csv(filename):
     Prvu liniju (zaglavlje) treba preskočiti, a prazne ili neispravne retke ignorirati.
     Ako nema valjanih podataka, funkcija treba vratiti 0."""
     # START SOLUTION
+    book_pages_numbers = []
 
+    with open(filename, 'r', encoding='utf-8') as file_reader:
+        for line in file_reader:
+            line = line.strip()
+            line_parts = line.split(',')
+            page_numbers = line_parts[-1]
+
+            if page_numbers.isdigit():
+                book_pages_numbers.append(int(page_numbers))
+
+    if book_pages_numbers:
+        return sum(book_pages_numbers) / len(book_pages_numbers)
+    else:
+        return 0
 
     # END SOLUTION
 
