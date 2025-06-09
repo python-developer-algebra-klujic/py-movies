@@ -20,8 +20,16 @@ def split_books_by_length(pages, threshold=300):
     Vraća dvije liste: prva s knjigama ispod praga, druga s knjigama jednakim ili većim od praga,
     zadržavajući izvorni redoslijed. Prag je po zadanom 300, ali ga korisnik može promijeniti argumentom threshold."""
     # START SOLUTION
+    below = []
+    above = []
 
+    for pages_number in pages:
+        if pages_number < threshold:
+            below.append(pages_number)
+        else:
+            above.append(pages_number)
 
+    return below, above
     # END SOLUTION
 
 
