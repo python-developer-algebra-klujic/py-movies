@@ -21,16 +21,22 @@ def unique_movies(titles):
     nazivima filmova. Redoslijed naslova unutar pojedine liste mora ostati isti kao u ulaznoj listi.
     Prazne stringove zanemari i ne koristi vanjske biblioteke."""
     # START SOLUTION
+    result = []
 
+    for title in titles:
+        if isinstance(title, str):
+            if title not in result:
+                result.append(title)
 
+    return result
     # END SOLUTION
 
 
 def main():
     assert unique_movies(["Alien", "Alien", "Aliens"]) == ["Alien", "Aliens"]
-    assert unique_movies([1, 2, 3]) == []
     assert unique_movies([]) == []
     assert unique_movies(["Inception", "Memento", "Inception", "Interstellar"]) == ["Inception", "Memento", "Interstellar"]
+    assert unique_movies([1, 2, 3]) == []
     print("All tests passed.")
 
 
